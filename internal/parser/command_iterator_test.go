@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -43,7 +42,7 @@ func TestCommandIterator_NextOptions(t *testing.T) {
 	require.True(t, it.GoNext('b'))
 	opts = it.NextOptions()
 	require.Len(t, opts.Options, 1)
-	require.Equal(t, "odo", opts.Merged)
+	require.Equal(t, "odo ", opts.Merged)
 }
 
 func TestCommandIterator_NextOptions_Used(t *testing.T) {
@@ -59,7 +58,7 @@ func TestCommandIterator_NextOptions_Used(t *testing.T) {
 	opts = it.NextOptions()
 	require.Len(t, opts.Options, 1)
 	require.Equal(t, "bo", opts.Options[0].Name)
-	require.Equal(t, "bo", opts.Merged)
+	require.Equal(t, "bo ", opts.Merged)
 
 	tree = NewCommandTree()
 	tree.Add("bo", &Payload{Value: "bo"})
@@ -73,7 +72,7 @@ func TestCommandIterator_NextOptions_Used(t *testing.T) {
 	opts = it.NextOptions()
 	require.Len(t, opts.Options, 1)
 	require.Equal(t, "bodo", opts.Options[0].Name)
-	require.Equal(t, "bodo", opts.Merged)
+	require.Equal(t, "bodo ", opts.Merged)
 }
 
 func TestCommandIterator_NextOptions_GoToEnd(t *testing.T) {
@@ -131,7 +130,6 @@ func TestCommandIterator_NextOptions_TwoPaths(t *testing.T) {
 	ops := it.NextOptions()
 	require.Len(t, ops.Options, 2)
 
-	fmt.Println("---")
 	tree.Use("value")
 	it = tree.GetIterator()
 	ops = it.NextOptions()
