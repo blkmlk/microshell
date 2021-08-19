@@ -17,7 +17,7 @@ type historyTestSuite struct {
 	history *history
 }
 
-func (t *historyTestSuite) SetupSuite() {
+func (t *historyTestSuite) SetupTest() {
 	builder, err := di.NewBuilder()
 	t.Require().NoError(err)
 

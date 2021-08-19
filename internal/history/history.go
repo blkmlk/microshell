@@ -90,12 +90,12 @@ func (h *history) Push() bool {
 
 	c := cursor.NewCursorFromString(value)
 
-	front := h.list.Back().Value.(*record)
-	front.value = value
-	front.cursor = c
+	back := h.list.Back().Value.(*record)
+	back.value = value
+	back.cursor = c
 
 	h.current = h.list.PushBack(&record{
-		id:     front.id + 1,
+		id:     back.id + 1,
 		value:  " ",
 		cursor: cursor.NewCursor(),
 	})
