@@ -38,20 +38,16 @@ func main() {
 							Number:    1,
 							ValueType: parser.ValueTypeString,
 						},
-						"area": {
-							Name:      "area",
+						"protocol": {
+							Name:      "protocol",
 							Mandatory: true,
 							Number:    2,
-							ValueType: parser.ValueTypeNumber,
+							ValueType: parser.ValueTypeString,
 						},
-						"ar": {
-							Name:      "ar",
-							Mandatory: false,
-							ValueType: parser.ValueTypeNumber,
-						},
-						"netlork": {
-							Name:      "netlork",
-							Mandatory: false,
+						"port": {
+							Name:      "port",
+							Mandatory: true,
+							Number:    3,
 							ValueType: parser.ValueTypeString,
 						},
 					},
