@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"fmt"
+	"github.com/blkmlk/microshell/internal/terminal"
 	"testing"
 
 	"github.com/blkmlk/microshell/internal/logger"
@@ -27,7 +27,6 @@ func execSetVar(ctx SystemContext, flags Flags, options Options) (Value, error) 
 	name := flags.Get("name").Value(ctx)
 	value := flags.Get("value")
 
-	//fmt.Println("set", name, value)
 	ctx.SetLocalVariable(name.String(), value.Value(ctx))
 
 	return NullValue, nil
@@ -101,6 +100,7 @@ func (t *CommandListExpressionTestSuite) SetupTest() {
 		DefinitionScope,
 		logger.Definition,
 		listDefinition,
+		terminal.DefinitionBuffer,
 	)
 	t.Require().NoError(err)
 
@@ -228,8 +228,7 @@ func (t *CommandListExpressionTestSuite) runTest(command string, expectedError e
 func (t *CommandListExpressionTestSuite) buildExpression(expr string) error {
 	t.parser.Flush()
 	var err error
-	for i, r := range expr {
-		fmt.Println(expr[0 : i+1])
+	for _, r := range expr {
 		_, err = t.parser.Add(models.Rune(r))
 
 		if err != nil {
