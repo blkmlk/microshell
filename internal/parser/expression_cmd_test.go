@@ -2,6 +2,7 @@ package parser
 
 import (
 	"fmt"
+	"github.com/blkmlk/microshell/internal/terminal"
 	"testing"
 
 	"github.com/blkmlk/microshell/internal/logger"
@@ -75,6 +76,7 @@ func (t *CommandExpressionTestSuite) SetupTest() {
 		DefinitionScope,
 		logger.Definition,
 		listDefinition,
+		terminal.DefinitionBuffer,
 	)
 	t.Require().NoError(err)
 
