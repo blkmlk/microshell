@@ -22,4 +22,5 @@
 
 ![func](https://user-images.githubusercontent.com/19294421/130196572-ba4bdebd-9439-47c4-a128-67f5dab7b88c.gif)
 
-
+# License
+See the [LICENSE](https://github.com/blkmlk/microshell/blob/master/LICENSE) file for license rights and limitations (MIT).
